@@ -9,7 +9,10 @@
  */
 
 module.exports.routes = {
-
+	//Self made routes
+	'GET /orders': 'OrdersController.getOrders',
+	'GET /orders/:id': 'OrdersController.getOrder',
+	'POST /orders': 'OrdersController.addOrder',
 
 //Self made routes
 'Post /Products':'ProductController.addPost',
@@ -21,8 +24,7 @@ module.exports.routes = {
 'Get /ProductCategory/:productid':'ProductCategoryController.getCategory',
 'Get /ProductCategory':'ProductCategoryController.getCategories',
 
-
-  /***************************************************************************
+	/***************************************************************************
   *                                                                          *
   * Make the view located at `views/homepage.ejs` your home page.            *
   *                                                                          *
@@ -31,10 +33,9 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': { view: 'pages/homepage' },
+	'/': { view: 'pages/homepage' }
 
-
-  /***************************************************************************
+	/***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *
   * (See https://sailsjs.com/config/routes for examples.)                    *
@@ -44,6 +45,4 @@ module.exports.routes = {
   * not match any of those, it is matched against static assets.             *
   *                                                                          *
   ***************************************************************************/
-
-
 };
