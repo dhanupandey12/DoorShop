@@ -1,0 +1,3 @@
+{"$$indexCreated":{"fieldName":"id","unique":true,"sparse":false}}
+{"$$indexCreated":{"fieldName":"ProductId","unique":true,"sparse":false}}
+{"$$indexCreated":{"fieldName":"CategoryId","unique":true,"sparse":false}}
