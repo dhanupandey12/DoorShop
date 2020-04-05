@@ -9,20 +9,22 @@
  */
 
 module.exports.routes = {
-	//Self made routes
+	//Orders routes
 	'GET /orders': 'OrdersController.getOrders',
 	'GET /orders/:id': 'OrdersController.getOrder',
 	'POST /orders': 'OrdersController.addOrder',
 
-//Self made routes
-'Post /Products':'ProductController.addPost',
-'Get /Products':'ProductController.getProducts',
-'Get /Products/:id':'ProductController.getProduct',
-'Put /Products/:id':'ProductController.editProduct',
-'Delete /Products/:id':'ProductController.deleteProduct',
-'Post /ProductCategory':'ProductCategoryController.addCategory',
-'Get /ProductCategory/:productid':'ProductCategoryController.getCategory',
-'Get /ProductCategory':'ProductCategoryController.getCategories',
+	//Products routes
+	'Post /Products': 'ProductController.addPost',
+	'Get /Products': 'ProductController.getProducts',
+	'Get /Products/:id': 'ProductController.getProduct',
+	'Put /Products/:id': 'ProductController.editProduct',
+	'Delete /Products/:id': 'ProductController.deleteProduct',
+
+	// Product Category routes
+	'Post /ProductCategory': 'ProductCategoryController.addCategory',
+	'Get /ProductCategory/:productid': 'ProductCategoryController.getCategory',
+	'Get /ProductCategory': 'ProductCategoryController.getCategories',
 
 	/***************************************************************************
   *                                                                          *
