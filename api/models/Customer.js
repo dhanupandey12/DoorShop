@@ -6,31 +6,13 @@
  */
 
 module.exports = {
-
-  attributes: {
-    userid:{type:'string'},
-    Name:{type:'string'},
-    EmailAddress:{type:'string'},
-    PhoneNumber:{type:'number'},
-    // DateCreated:{type: 'string', columnType: 'date', defaultsTo:Date.now},
-    // EmailVerified:{type:'number',defaultsTo:'0'},
-    // address:{type:'string',model:'Address',via:'userid'},
-
-    //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
-    //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
-    //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-
-
-    //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
-    //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
-    //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
-
-
-    //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
-    //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
-    //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-
-  },
-
+	attributes: {
+		userid: { type: 'string' },
+		Name: { type: 'string' },
+		EmailAddress: { type: 'string' },
+		PhoneNumber: { type: 'number' }
+		// DateCreated:{type: 'string', columnType: 'date', defaultsTo:Date.now},
+		// EmailVerified:{type:'number',defaultsTo:'0'},
+		// address:{type:'string',model:'Address',via:'userid'},
+	}
 };
-

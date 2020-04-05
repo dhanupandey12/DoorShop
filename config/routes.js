@@ -9,18 +9,20 @@
  */
 
 module.exports.routes = {
+	//Self made routes
+	'Post /Products': 'ProductController.addpost',
+	'Get /Products': 'ProductController.getproducts',
+	'Get /Products/:id': 'ProductController.getproduct',
 
+	'GET /orders': 'OrdersController.getOrders',
+	'GET /orders/:id': 'OrdersController.getOrder',
+	'POST /orders': 'OrdersController.addOrder',
 
-//Self made routes
-'Post /Products':'ProductController.addpost',
-'Get /Products':'ProductController.getproducts',
-'Get /Products/:id':'ProductController.getproduct',
-'Post /ProductCategory':'ProductCategoryController.addCategory',
-'Get /ProductCategory/:productid':'ProductCategoryController.getCategory',
-'Get /ProductCategory':'ProductCategoryController.getCategories',
+	'Post /ProductCategory': 'ProductCategoryController.addCategory',
+	'Get /ProductCategory/:productid': 'ProductCategoryController.getCategory',
+	'Get /ProductCategory': 'ProductCategoryController.getCategories',
 
-
-  /***************************************************************************
+	/***************************************************************************
   *                                                                          *
   * Make the view located at `views/homepage.ejs` your home page.            *
   *                                                                          *
@@ -29,10 +31,9 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': { view: 'pages/homepage' },
+	'/': { view: 'pages/homepage' }
 
-
-  /***************************************************************************
+	/***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *
   * (See https://sailsjs.com/config/routes for examples.)                    *
@@ -42,6 +43,4 @@ module.exports.routes = {
   * not match any of those, it is matched against static assets.             *
   *                                                                          *
   ***************************************************************************/
-
-
 };
