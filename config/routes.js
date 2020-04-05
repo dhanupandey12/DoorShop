@@ -12,9 +12,11 @@ module.exports.routes = {
 
 
 //Self made routes
-'Post /Products':'ProductController.addpost',
-'Get /Products':'ProductController.getproducts',
-'Get /Products/:id':'ProductController.getproduct',
+'Post /Products':'ProductController.addPost',
+'Get /Products':'ProductController.getProducts',
+'Get /Products/:id':'ProductController.getProduct',
+'Put /Products/:id':'ProductController.editProduct',
+'Delete /Products/:id':'ProductController.deleteProduct',
 'Post /ProductCategory':'ProductCategoryController.addCategory',
 'Get /ProductCategory/:productid':'ProductCategoryController.getCategory',
 'Get /ProductCategory':'ProductCategoryController.getCategories',
