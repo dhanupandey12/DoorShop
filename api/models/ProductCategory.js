@@ -6,9 +6,28 @@
  */
 
 module.exports = {
-	attributes: {
-		ProductId: { type: 'number', unique: true, required: true },
-		CategoryId: { type: 'number', required: true, unique: true },
-		CategoryName: { type: 'string', required: true }
-	}
+
+  attributes: {
+    ProductId:{type:'number',unique:true,required:true},
+    CategoryId:{type:'number',required:true,unique:true},
+    CategoryName:{type:'string',required:true},
+  
+
+    //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
+    //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
+    //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
+
+
+    //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
+    //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
+    //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
+
+
+    //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
+    //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
+    //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
+
+  },
+
 };
+
