@@ -18,6 +18,9 @@ module.exports = {
 			orderEmail: req.body.email
 		};
 		Orders.create(orderObj).fetch().exec((err, order) => {
+			if (err) {
+				res.send(err);
+			}
 			// console.log(order);
 			res.send(order);
 		});
@@ -25,13 +28,37 @@ module.exports = {
 
 	getOrders: (req, res) => {
 		Orders.find({}).exec((err, orders) => {
+			if (err) {
+				res.send(err);
+			}
 			res.send(orders);
 		});
 	},
 
 	getOrder: (req, res) => {
 		Orders.find({ id: req.params.id }).exec((err, order) => {
+			if (err) {
+				res.send(err);
+			}
 			res.send(order);
+		});
+	},
+
+	deleteOrder: (req, res) => {
+		Orders.destroy({ id: req.params.id }).fetch().exec((err, order) => {
+			if (err) {
+				res.send(err);
+			}
+			res.send(order);
+		});
+	},
+
+	deleteOrders: (req, res) => {
+		Orders.destroy({}).fetch().exec((err, orders) => {
+			if (err) {
+				res.send(err);
+			}
+			res.send(orders);
 		});
 	}
 };

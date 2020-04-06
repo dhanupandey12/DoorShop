@@ -18,6 +18,8 @@ module.exports.routes = {
 	'GET /orders': 'OrdersController.getOrders',
 	'GET /orders/:id': 'OrdersController.getOrder',
 	'POST /orders': 'OrdersController.addOrder',
+	'DELETE /orders': 'OrdersController.deleteOrders',
+	'DELETE /orders/:id': 'OrdersController.deleteOrder',
 
 	//Products routes
 	'Post /Products': 'ProductController.addPost',
