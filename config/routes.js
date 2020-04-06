@@ -9,20 +9,21 @@
  */
 
 module.exports.routes = {
-	//users route
+	// Users routes
 	'POST /User': 'CustomerController.createUser',
 	'GET /User': 'CustomerController.getAllUser',
 	'GET /User/:id': 'CustomerController.getUserById',
 	'Put /User/:id': 'CustomerController.edit',
-  'Delete /User/:id': 'CustomerController.delete',
-	//Orders routes
+	'Delete /User/:id': 'CustomerController.delete',
+
+	// Orders routes
 	'GET /orders': 'OrdersController.getOrders',
 	'GET /orders/:id': 'OrdersController.getOrder',
 	'POST /orders': 'OrdersController.addOrder',
 	'DELETE /orders': 'OrdersController.deleteOrders',
 	'DELETE /orders/:id': 'OrdersController.deleteOrder',
 
-	//Products routes
+	// Products routes
 	'Post /Products': 'ProductController.addPost',
 	'Get /Products': 'ProductController.getProducts',
 	'Get /Products/:id': 'ProductController.getProduct',
