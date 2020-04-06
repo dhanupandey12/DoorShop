@@ -7,21 +7,49 @@
 
 module.exports = {
 	getCategories: function(req, res) {
-		ProductCategory.find({}, (err, categories) => {
-			if (err) return err;
-			res.json(categories);
-		});
+		ProductCategory.find({})
+			.then(function(categories) {
+				if (categories == '') return res.send(449);
+				res.json(categories);
+			})
+			.catch(function(err) {
+				res.serverError(err);
+			});
 	},
 	getCategory: function(req, res) {
-		res.send('Accessed getcategory');
+		ProductCategory.find({ id: req.params.id })
+			.then(function(category) {
+				if (category == '') return res.send(449);
+				res.json(category);
+			})
+			.catch(function(err) {
+				res.serverError(err);
+			});
+		// res.send('Accessed getcategory');
 	},
 	addCategory: function(req, res) {
-		// let category=req.body.category
-		// categoryobj={CategoryName:category}
-		// ProductCategory.create(categoryobj).fetch().exec(function(err,result){
-		//     if(err) return err
-
-		// })
-		res.send('Accessed addcategory');
+		categoryObj = {
+			CategoryName: req.body.category
+		};
+		// console.log(categoryObj);
+		ProductCategory.create(categoryObj)
+			.fetch()
+			.then(function(category) {
+				if (category == '') return res.send(449);
+				res.json(category);
+			})
+			// Uniqueness constraint violation
+			.catch({ code: 'E_UNIQUE' }, function(err) {
+				res.sendStatus(409);
+			})
+			// Some other kind of usage / validation error
+			.catch({ name: 'UsageError' }, function(err) {
+				res.badRequest();
+			})
+			// If something completely unexpected happened.
+			.catch(function(err) {
+				res.serverError(err);
+			});
+		// res.send('Accessed addcategory');
 	}
 };

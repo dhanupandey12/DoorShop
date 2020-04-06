@@ -23,7 +23,7 @@ module.exports.routes = {
 
 	// Product Category routes
 	'Post /ProductCategory': 'ProductCategoryController.addCategory',
-	'Get /ProductCategory/:productid': 'ProductCategoryController.getCategory',
+	'Get /ProductCategory/:id': 'ProductCategoryController.getCategory',
 	'Get /ProductCategory': 'ProductCategoryController.getCategories',
 
 	/***************************************************************************
