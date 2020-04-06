@@ -10,8 +10,8 @@
 
 module.exports.routes = {
 	//users route
-	'POST /createUser': 'CustomerController.createUser',
-	'GET /AllUser': 'CustomerController.getAllUser',
+	'POST /User': 'CustomerController.createUser',
+	'GET /User': 'CustomerController.getAllUser',
 	'GET /User/:id': 'CustomerController.getUserById',
 
 	//Orders routes

@@ -19,9 +19,6 @@ module.exports = {
 			UserAddress2: req.body.UserAddress2,
 			PostalCode: req.body.PostalCode
 		};
-		console.log(req.body);
-		console.log(user);
-		console.log('adding user');
 		Customer.create(user).fetch().exec((err, result) => {
 			if (err) return err;
 			res.json(result);
