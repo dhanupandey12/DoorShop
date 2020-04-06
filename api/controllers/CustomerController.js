@@ -38,5 +38,50 @@ module.exports = {
 			if (err) return err;
 			res.json(user);
 		});
+	},
+
+	edit: (req, res) => {
+		const id = req.params.id;
+		console.log(req.body)
+  Customer.update({ _id: id }).set(req.body)
+	  .fetch()
+    .then(result => {
+      res.status(200).send(result);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).send({
+        error: err
+      });
+    });
+	},
+
+	delete: (req, res) => {
+		const id = req.params.id;
+		Customer.destroy({_id:id})
+		.fetch()
+		 	.then((result)=>{
+		 		return res.json(result);
+		 	Customer.destroy({_id:id}).fetch()
+		 	})
+			.catch((err) =>{
+				console.log(err);
+	      res.status(500).send({
+	        error: err
+	      });
+			})
 	}
+
+// delete:(req,res)=>{
+// 	const id = req.params.id;
+// 	Customer.destroy({_id:id}).fetch()
+// 	.exec((err,result)=>{
+// 		if(err)
+// 		return err;
+// 		return res.json(result);
+// 	});
+// }
+
+
+
 };
