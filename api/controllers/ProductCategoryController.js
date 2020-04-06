@@ -51,5 +51,42 @@ module.exports = {
 				res.serverError(err);
 			});
 		// res.send('Accessed addcategory');
+	},
+	editCategory: function(req, res) {
+		newResult = {
+			CategoryName: req.body.category
+		};
+		console.log('in edit');
+		ProductCategory.update({ _id: req.params.id })
+			.set(newResult)
+			.fetch()
+			.then(function(updatedResult) {
+				if (updatedResult == '') return res.send(449);
+				res.json(updatedResult);
+			})
+			// Uniqueness constraint violation
+			.catch({ code: 'E_UNIQUE' }, function(err) {
+				res.sendStatus(409);
+			})
+			// Some other kind of usage / validation error
+			.catch({ name: 'UsageError' }, function(err) {
+				res.badRequest();
+			})
+			// If something completely unexpected happened.
+			.catch(function(err) {
+				res.serverError(err);
+			});
+	},
+
+	deleteCategory: function(req, res) {
+		ProductCategory.destroy({ _id: req.params.id })
+			.fetch()
+			.then(function(deletedCategory) {
+				if (deletedCategory == '') return res.send(449);
+				res.json(deletedCategory);
+			})
+			.catch(function(err) {
+				res.serverError(err);
+			});
 	}
 };

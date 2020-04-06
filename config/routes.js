@@ -25,6 +25,8 @@ module.exports.routes = {
 	'Post /ProductCategory': 'ProductCategoryController.addCategory',
 	'Get /ProductCategory/:id': 'ProductCategoryController.getCategory',
 	'Get /ProductCategory': 'ProductCategoryController.getCategories',
+	'Put /ProductCategory/:id': 'ProductCategoryController.editCategory',
+	'Delete /ProductCategory/:id': 'ProductCategoryController.deleteCategory',
 
 	/***************************************************************************
   *                                                                          *
