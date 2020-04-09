@@ -23,6 +23,14 @@ module.exports.routes = {
 	'DELETE /orders': 'OrdersController.deleteOrders',
 	'DELETE /orders/:id': 'OrdersController.deleteOrder',
 
+	// Cart routes
+	'GET /cart': 'CartController.getCarts',
+	'GET /cart/:id': 'CartController.getCart',
+	'POST /cart': 'CartController.addCart',
+	'PUT /cart/:id': 'CartController.editCart',
+	'DELETE /cart': 'CartController.deleteCarts',
+	'DELETE /cart/:id': 'CartController.deleteCart',
+
 	// Products routes
 	'Post /Products': 'ProductController.addPost',
 	'Get /Products': 'ProductController.getProducts',
