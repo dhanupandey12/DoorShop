@@ -19,7 +19,8 @@ module.exports = {
 		};
 		Orders.create(orderObj).fetch().exec((err, order) => {
 			if (err) {
-				res.send(err);
+				if (err.code == 'E_INVALID_NEW_RECORD') res.badRequest();
+				else res.serverError(err);
 			}
 			// console.log(order);
 			res.send(order);
@@ -29,7 +30,7 @@ module.exports = {
 	getOrders: (req, res) => {
 		Orders.find({}).exec((err, orders) => {
 			if (err) {
-				res.send(err);
+				res.serverError(err);
 			}
 			res.send(orders);
 		});
@@ -38,7 +39,7 @@ module.exports = {
 	getOrder: (req, res) => {
 		Orders.find({ id: req.params.id }).exec((err, order) => {
 			if (err) {
-				res.send(err);
+				res.serverError(err);
 			}
 			res.send(order);
 		});
@@ -47,7 +48,7 @@ module.exports = {
 	deleteOrder: (req, res) => {
 		Orders.destroy({ id: req.params.id }).fetch().exec((err, order) => {
 			if (err) {
-				res.send(err);
+				res.serverError(err);
 			}
 			res.send(order);
 		});
@@ -56,7 +57,7 @@ module.exports = {
 	deleteOrders: (req, res) => {
 		Orders.destroy({}).fetch().exec((err, orders) => {
 			if (err) {
-				res.send(err);
+				res.serverError(err);
 			}
 			res.send(orders);
 		});
