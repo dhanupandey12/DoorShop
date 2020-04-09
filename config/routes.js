@@ -9,21 +9,36 @@
  */
 
 module.exports.routes = {
+<<<<<<< HEAD
 
 'POST /login': 'AuthController.index',
 
 	//users route
+=======
+	// Users routes
+>>>>>>> c12305b05d63c40382f052cae4f3282c177c0867
 	'POST /User': 'CustomerController.createUser',
 	'GET /User': 'CustomerController.getAllUser',
 	'GET /User/:id': 'CustomerController.getUserById',
 	'Put /User/:id': 'CustomerController.edit',
-  'Delete /User/:id': 'CustomerController.delete',
-	//Orders routes
+	'Delete /User/:id': 'CustomerController.delete',
+
+	// Orders routes
 	'GET /orders': 'OrdersController.getOrders',
 	'GET /orders/:id': 'OrdersController.getOrder',
 	'POST /orders': 'OrdersController.addOrder',
+	'DELETE /orders': 'OrdersController.deleteOrders',
+	'DELETE /orders/:id': 'OrdersController.deleteOrder',
 
-	//Products routes
+	// Cart routes
+	'GET /cart': 'CartController.getCarts',
+	'GET /cart/:id': 'CartController.getCart',
+	'POST /cart': 'CartController.addCart',
+	'PUT /cart/:id': 'CartController.editCart',
+	'DELETE /cart': 'CartController.deleteCarts',
+	'DELETE /cart/:id': 'CartController.deleteCart',
+
+	// Products routes
 	'Post /Products': 'ProductController.addPost',
 	'Get /Products': 'ProductController.getProducts',
 	'Get /Products/:id': 'ProductController.getProduct',
