@@ -4,12 +4,13 @@
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
-
+var bcrypt = require('bcryptjs');
 module.exports = {
 	attributes: {
 		UserName: { type: 'string', required: true },
-		UserPassword: { type: 'string', required: true },
-		EmailAddress: { type: 'string', required: true },
+		UserPassword: {  type: "string",  minLength: 6},
+
+		EmailAddress: {	type: "string",required: true,unique: true},
 		PhoneNumber: { type: 'string', required: true },
 		UserCity: { type: 'string', required: true },
 		UserState: { type: 'string', required: true },
@@ -17,8 +18,22 @@ module.exports = {
 		UserAddress1: { type: 'string', required: true },
 		UserAddress2: { type: 'string', required: true },
 		PostalCode: { type: 'string' }
-		// DateCreated:{type: 'string', columnType: 'date', defaultsTo:Date.now},
-		// EmailVerified:{type:'number',defaultsTo:'0'},
-		// address:{type:'string',model:'Address',via:'userid'},
-	}
+
+	},
+	customToJSON: function() {
+
+         	return _.omit(this, ['UserPassword', 'ssn'])
+                  },
+
+		comparePassword : function (password, user, cb) {
+    bcrypt.compare(password, user.UserPassword, function (err, match) {
+
+      if(err) cb(err);
+      if(match) {
+        cb(null, true);
+      } else {
+        cb(err);
+      }
+    })
+  }
 };

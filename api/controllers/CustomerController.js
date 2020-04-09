@@ -4,13 +4,21 @@
  * @description :: Server-side actions for handling incoming requests.
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
+   var bcrypt = require('bcryptjs');
+
 module.exports = {
 	createUser: (req, res) => {
 		var user;
+    if (req.body.UserPassword !== req.body.confirmPassword) {
+     return res.status(401).json("Password doesn't match")
+   }
+
+		var UserPassword=req.body.UserPassword;
+		var hash = bcrypt.hashSync(UserPassword, 10 );
 		user = {
 			UserName: req.body.UserName,
-			UserPassword: req.body.UserPassword,
-			EmailAddress: req.body.EmailAddress,
+			UserPassword: hash,
+    	EmailAddress: req.body.EmailAddress,
 			PhoneNumber: req.body.PhoneNumber,
 			UserCity: req.body.UserCity,
 			UserState: req.body.UserState,
@@ -19,9 +27,11 @@ module.exports = {
 			UserAddress2: req.body.UserAddress2,
 			PostalCode: req.body.PostalCode
 		};
+   //console.log(user);
 		Customer.create(user).fetch().exec((err, result) => {
 			if (err) return err;
-			res.json(result);
+			//res.status(200).json({user: result, token: jwToken.issue({id: result.id})});
+      res.status(200).json({user:result});
 		});
 	},
 

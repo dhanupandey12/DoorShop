@@ -9,6 +9,9 @@
  */
 
 module.exports.routes = {
+
+'POST /login': 'AuthController.index',
+
 	//users route
 	'POST /User': 'CustomerController.createUser',
 	'GET /User': 'CustomerController.getAllUser',

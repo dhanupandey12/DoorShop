@@ -10,6 +10,15 @@
 
 module.exports.policies = {
 
+ '*': ['isAuthorized'],
+  'CustomerController': {
+    //'*': 'isAuthorized',
+    'createUser': true
+  },
+
+  'AuthController': {
+    '*': true
+  }
   /***************************************************************************
   *                                                                          *
   * Default policy for all controllers and actions, unless overridden.       *
