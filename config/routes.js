@@ -9,10 +9,9 @@
  */
 
 module.exports.routes = {
-
-//AuthController
-'POST /login/User': 'AuthController.loginUser',
-'POST /login/Shop': 'AuthController.loginShop',
+	//AuthController
+	'POST /login/User': 'AuthController.loginUser',
+	'POST /login/Shop': 'AuthController.loginShop',
 
 	//users route
 	// Users routes
@@ -58,6 +57,13 @@ module.exports.routes = {
 	'Get /ProductCategory': 'ProductCategoryController.getCategories',
 	'Put /ProductCategory/:id': 'ProductCategoryController.editCategory',
 	'Delete /ProductCategory/:id': 'ProductCategoryController.deleteCategory',
+
+	// Shop Category routes
+	'Post /ShopCategory': 'ShopCategoryController.addCategory',
+	'Get /ShopCategory/:id': 'ShopCategoryController.getCategory',
+	'Get /ShopCategory': 'ShopCategoryController.getCategories',
+	'Put /ShopCategory/:id': 'ShopCategoryController.editCategory',
+	'Delete /ShopCategory/:id': 'ShopCategoryController.deleteCategory',
 
 	/***************************************************************************
   *                                                                          *
