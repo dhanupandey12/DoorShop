@@ -10,11 +10,16 @@
 
 module.exports.policies = {
 
- '*': ['isAuthorized'],
+ //'*': ['isAuthorized'],
+ 'ShopkeeperController': {
+   '*': 'isAuthorized',
+   'createShop': true
+ },
   'CustomerController': {
-    //'*': 'isAuthorized',
+    '*': 'isAuthorized',
     'createUser': true
   },
+
 
   'AuthController': {
     '*': true

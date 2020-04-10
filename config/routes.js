@@ -9,19 +9,26 @@
  */
 
 module.exports.routes = {
-<<<<<<< HEAD
 
-'POST /login': 'AuthController.index',
+//AuthController
+'POST /login/User': 'AuthController.loginUser',
+'POST /login/Shop': 'AuthController.loginShop',
 
 	//users route
-=======
 	// Users routes
->>>>>>> c12305b05d63c40382f052cae4f3282c177c0867
 	'POST /User': 'CustomerController.createUser',
 	'GET /User': 'CustomerController.getAllUser',
 	'GET /User/:id': 'CustomerController.getUserById',
 	'Put /User/:id': 'CustomerController.edit',
 	'Delete /User/:id': 'CustomerController.delete',
+
+	//Shopkeeper routes
+
+	'POST /Shopkeeper/': 'ShopkeeperController.createShop',
+	'GET /Shopkeeper': 'ShopkeeperController.getAllShop',
+	'GET /Shopkeeper/:id': 'ShopkeeperController.getShopById',
+	'Put /Shopkeeper/:id': 'ShopkeeperController.edit',
+	'Delete /Shopkeeper/:id': 'ShopkeeperController.delete',
 
 	// Orders routes
 	'GET /orders': 'OrdersController.getOrders',
