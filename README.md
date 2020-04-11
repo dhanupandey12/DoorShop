@@ -3,6 +3,16 @@
 a [Sails v1](https://sailsjs.com) application
 
 
+### TO-DO List
+
+* [ ] Shopkeeper add products
+* [x] Shop Category
+* [ ] User creates order
+* [ ] User add product to cart
+* [ ] OTP verification
+* [ ] E-Mail verification
+
+
 ### Links
 
 + [Sails framework documentation](https://sailsjs.com/get-started)
