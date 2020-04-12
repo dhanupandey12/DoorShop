@@ -13,7 +13,6 @@ module.exports.routes = {
 	'POST /login/User': 'AuthController.loginUser',
 	'POST /login/Shop': 'AuthController.loginShop',
 
-	//users route
 	// Users routes
 	'POST /User': 'CustomerController.createUser',
 	'GET /User': 'CustomerController.getAllUser',
@@ -22,7 +21,6 @@ module.exports.routes = {
 	'Delete /User/:id': 'CustomerController.delete',
 
 	//Shopkeeper routes
-
 	'POST /Shopkeeper/': 'ShopkeeperController.createShop',
 	'GET /Shopkeeper': 'ShopkeeperController.getAllShop',
 	'GET /Shopkeeper/:id': 'ShopkeeperController.getShopById',
@@ -32,6 +30,12 @@ module.exports.routes = {
 	// Orders routes
 	'GET /orders': 'OrdersController.getOrders',
 	'GET /orders/:id': 'OrdersController.getOrder',
+	/**
+	 * Assocation route
+	 * To fetch all orders for a customer 
+	 */
+	'GET /user/:userId/orders': 'OrdersController.fetchOrdersByCustomerId',
+
 	'POST /orders': 'OrdersController.addOrder',
 	'DELETE /orders': 'OrdersController.deleteOrders',
 	'DELETE /orders/:id': 'OrdersController.deleteOrder',

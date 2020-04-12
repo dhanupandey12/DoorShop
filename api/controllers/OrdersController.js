@@ -9,13 +9,13 @@ module.exports = {
 	addOrder: (req, res) => {
 		let orderObj = {
 			cartId: req.body.cartId,
-			userId: req.body.userId,
 			orderAmount: req.body.amount,
 			orderShipping: req.body.shipping,
 			orderTax: req.body.tax,
 			orderAddress: req.body.address,
 			orderPhone: req.body.phone,
-			orderEmail: req.body.email
+			orderEmail: req.body.email,
+			orderedBy: req.body.customer
 		};
 		Orders.create(orderObj).fetch().exec((err, order) => {
 			if (err) {
@@ -60,6 +60,15 @@ module.exports = {
 				res.serverError(err);
 			}
 			res.send(orders);
+		});
+	},
+
+	//fetching orders for a customer
+	fetchOrdersByCustomerId: (req, res) => {
+		userId = req.params.userId;
+		Customer.findOne({ id: userId }).populate('orders').exec((err, user) => {
+			if (err) res.send(err);
+			res.send(user.orders);
 		});
 	}
 };
