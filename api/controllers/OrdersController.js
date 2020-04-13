@@ -7,28 +7,59 @@
 
 module.exports = {
 	addOrder: (req, res) => {
-		let orderObj = {
-			cartId: req.body.cartId,
-			orderAmount: req.body.amount,
-			orderShipping: req.body.shipping,
-			orderTax: req.body.tax,
-			orderAddress: req.body.address,
-			orderPhone: req.body.phone,
-			orderEmail: req.body.email,
-			orderedBy: req.body.customer
-		};
-		Orders.create(orderObj).fetch().exec((err, order) => {
-			if (err) {
-				if (err.code == 'E_INVALID_NEW_RECORD') res.badRequest();
-				else res.serverError(err);
+		var ProductIds = req.body.productIds;
+		if (typeof ProductIds == 'string') {
+			let orderObj = {
+				cartId: req.body.cartId,
+				orderAmount: req.body.amount,
+				orderShipping: req.body.shipping,
+				orderTax: req.body.tax,
+				orderAddress: req.body.address,
+				orderPhone: req.body.phone,
+				orderEmail: req.body.email,
+				orderedBy: req.body.customer,
+				ProductId: req.body.productIds
+			};
+			Orders.create(orderObj).fetch().exec((err, order) => {
+				if (err) {
+					console.log(err);
+					if (err.code == 'E_INVALID_NEW_RECORD') res.badRequest();
+					else res.serverError(err);
+				}
+				// console.log(order);
+				res.send(order);
+			});
+		} else {
+			var orders = [];
+			for (var i = 0; i < ProductIds.length; i++) {
+				let orderObj = {
+					cartId: req.body.cartId,
+					orderAmount: req.body.amount,
+					orderShipping: req.body.shipping,
+					orderTax: req.body.tax,
+					orderAddress: req.body.address,
+					orderPhone: req.body.phone,
+					orderEmail: req.body.email,
+					orderedBy: req.body.customer,
+					ProductId: req.body.productIds[i]
+				};
+				orders.push(orderObj);
 			}
-			// console.log(order);
-			res.send(order);
-		});
+			console.log(orders);
+			Orders.createEach(orders).fetch().exec((err, orders) => {
+				if (err) {
+					console.log(err);
+					if (err.code == 'E_INVALID_NEW_RECORD') res.badRequest();
+					else res.serverError(err);
+				}
+				// console.log(order);
+				res.send(orders);
+			});
+		}
 	},
 
 	getOrders: (req, res) => {
-		Orders.find({}).exec((err, orders) => {
+		Orders.find({}).populate('ProductId').populate('orderedBy').exec((err, orders) => {
 			if (err) {
 				res.serverError(err);
 			}
@@ -37,7 +68,7 @@ module.exports = {
 	},
 
 	getOrder: (req, res) => {
-		Orders.find({ id: req.params.id }).exec((err, order) => {
+		Orders.find({ id: req.params.id }).populate('ProductId').populate('orderedBy').exec((err, order) => {
 			if (err) {
 				res.serverError(err);
 			}

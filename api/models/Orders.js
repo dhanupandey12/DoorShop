@@ -17,7 +17,13 @@ module.exports = {
 		orderPhone: { type: 'string', required: true },
 		orderEmail: { type: 'string', required: true },
 
+		// Association orders and product
+
+		ProductId: {
+			model: 'Product'
+		},
 		// Association orders and customer
+
 		orderedBy: {
 			model: 'customer'
 		}
