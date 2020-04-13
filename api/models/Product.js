@@ -7,7 +7,7 @@
 
 module.exports = {
 	attributes: {
-		CategoryId: { type: 'string', required: true },
+		CategoryId: { model: 'ProductCategory' },
 		ShopId: { type: 'string', required: true, unique: true },
 		ProductName: { type: 'string', required: true },
 		Description: { type: 'string', required: true },

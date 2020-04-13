@@ -61,6 +61,7 @@ module.exports = {
 	},
 	getProducts: function(req, res) {
 		Product.find({})
+			.populate('CategoryId')
 			.then(function(result) {
 				if (result == '') return res.send(449);
 				res.json(result);
@@ -73,6 +74,7 @@ module.exports = {
 	},
 	getProduct: function(req, res) {
 		Product.find({ _id: req.params.id })
+			.populate('CategoryId')
 			.then(function(result) {
 				if (result == '') return res.send(449);
 				res.json(result);
