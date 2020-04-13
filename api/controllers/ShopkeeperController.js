@@ -43,14 +43,14 @@ module.exports = {
 
 	getShopById: (req, res) => {
 		let id = req.params.id;
-		Shopkeeper.find({ _id: id }).exec((err, user) => {
+		Shopkeeper.find({ _id: id }).populate('CategoryId').exec((err, user) => {
 			if (err) return err;
 			res.json(user);
 		});
 	},
 
 	getAllShop: (req, res) => {
-		Shopkeeper.find({}).exec((err, user) => {
+		Shopkeeper.find({}).populate('CategoryId').exec((err, user) => {
 			if (err) return err;
 			res.json(user);
 		});

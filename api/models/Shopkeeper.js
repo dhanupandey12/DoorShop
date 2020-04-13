@@ -10,7 +10,7 @@ module.exports = {
 		UserName: { type: 'string', required: true },
 		UserPassword: { type: 'string', minLength: 6 },
 		EmailAddress: { type: 'string', required: true, unique: true },
-		CategoryId: { type: 'string', required: true },
+		CategoryId: { model: 'ShopCategory' },
 		PhoneNumber: { type: 'string', required: true },
 		UserCity: { type: 'string', required: true },
 		UserState: { type: 'string', required: true },
