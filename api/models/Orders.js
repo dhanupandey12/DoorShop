@@ -20,7 +20,7 @@ module.exports = {
 		// Association orders and product
 
 		ProductId: {
-			model: 'Product'
+			collection: 'Product'
 		},
 		// Association orders and customer
 

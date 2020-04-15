@@ -8,7 +8,7 @@
 module.exports = {
 	attributes: {
 		CategoryId: { model: 'ProductCategory' },
-		ShopId: { type: 'string', required: true, unique: true },
+		ShopId: { type: 'string', required: true },
 		ProductName: { type: 'string', required: true },
 		Description: { type: 'string', required: true },
 		ProductImagesPaths: { type: 'string' },
