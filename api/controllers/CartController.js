@@ -13,9 +13,9 @@ module.exports = {
 		// 	productsList.push(products[pid]);
 		// }
 		let cartObj = {
-			cartId: req.body.cartId,
-			userId: req.body.userId,
-			cartTotal: req.body.total,
+			// cartId: req.body.cartId,
+			// userId: req.body.userId,
+			// cartTotal: req.body.total,
 			products: req.body.products
 		};
 		Cart.create(cartObj).fetch().exec((err, cart) => {
@@ -39,19 +39,23 @@ module.exports = {
 	},
 
 	getCart: (req, res) => {
-		Cart.find({ id: req.params.id }).exec((err, cart) => {
-			if (err) {
-				res.serverError(err);
-			}
+		// Cart.find({ id: req.params.id }).exec((err, cart) => {
+		// 	if (err) {
+		// 		res.serverError(err);
+		// 	}
+		// 	res.send(cart);
+		// });
+		Cart.find({ id: req.params.id }).populate('products').exec((err, cart) => {
+			if (err) res.serverError(err);
 			res.send(cart);
 		});
 	},
 
 	editCart: (req, res) => {
 		let editedCart = {
-			cartId: req.body.cartId,
-			userId: req.body.userId,
-			cartTotal: req.body.total,
+			// cartId: req.body.cartId,
+			// userId: req.body.userId,
+			// cartTotal: req.body.total,
 			products: req.body.products
 		};
 		Cart.update({ id: req.params.id }, editedCart).fetch().exec((err, cart) => {

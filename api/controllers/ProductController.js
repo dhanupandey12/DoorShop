@@ -128,5 +128,16 @@ module.exports = {
 			.catch(function(err) {
 				res.serverError(err);
 			});
+	},
+	deleteProducts: (req, res) => {
+		Product.destroy({})
+			.fetch()
+			.then(function(deletedProduct) {
+				if (deletedProduct == '') return res.send(449);
+				res.json(deletedProduct);
+			})
+			.catch(function(err) {
+				res.serverError(err);
+			});
 	}
 };
