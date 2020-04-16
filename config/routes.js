@@ -54,6 +54,7 @@ module.exports.routes = {
 	'Get /Products/:id': 'ProductController.getProduct',
 	'Put /Products/:id': 'ProductController.editProduct',
 	'Delete /Products/:id': 'ProductController.deleteProduct',
+	'Delete /Products': 'ProductController.deleteProducts',
 
 	// Product Category routes
 	'Post /ProductCategory': 'ProductCategoryController.addCategory',
