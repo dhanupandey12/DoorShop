@@ -39,7 +39,7 @@ module.exports = {
 	},
 
 	getOrder: (req, res) => {
-		Orders.find({ id: req.params.id }).populate('ProductId').populate('orderedBy').exec((err, order) => {
+		Orders.findOne({ id: req.params.id }).populate('ProductId').populate('orderedBy').exec((err, order) => {
 			if (err) {
 				res.serverError(err);
 			}

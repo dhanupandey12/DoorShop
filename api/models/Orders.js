@@ -8,7 +8,7 @@
 module.exports = {
 	attributes: {
 		// orderId: { type: 'string', required: true },
-		cartId: { type: 'number', required: true },
+		// cartId: { type: 'number', required: true },
 		// userId: { type: 'number', required: true },
 		orderAmount: { type: 'number', required: true },
 		orderShipping: { type: 'number', required: true },
@@ -17,13 +17,12 @@ module.exports = {
 		orderPhone: { type: 'string', required: true },
 		orderEmail: { type: 'string', required: true },
 
-		// Association orders and product
-
+		// Association orders and product (one order -> many products)
 		ProductId: {
 			collection: 'Product'
 		},
-		// Association orders and customer
 
+		// Association orders and customer (one user -> many orders)
 		orderedBy: {
 			model: 'customer'
 		}

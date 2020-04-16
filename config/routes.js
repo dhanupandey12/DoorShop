@@ -43,8 +43,12 @@ module.exports.routes = {
 	// Cart routes
 	'GET /cart': 'CartController.getCarts',
 	'GET /cart/:id': 'CartController.getCart',
-	'POST /cart': 'CartController.addCart',
-	'PUT /cart/:id': 'CartController.editCart',
+	// 'POST /cart': 'CartController.addCart',
+	// 'PUT /cart/:id': 'CartController.editCart',
+	'POST /cart': 'CartController.createCart',
+	'PUT /cart/:cartId/add/:prodId': 'CartController.addToCart',
+	'PUT /cart/:cartId/remove/:prodId': 'CartController.removeFromCart',
+
 	'DELETE /cart': 'CartController.deleteCarts',
 	'DELETE /cart/:id': 'CartController.deleteCart',
 
