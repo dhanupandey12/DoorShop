@@ -93,12 +93,12 @@ module.exports = {
 		// console.log(oldcart);
 		productList = oldcart.products.map((p) => p.id);
 		// console.log('prdo list:');
-		console.log(productList);
+		// console.log(productList);
 		const index = productList.indexOf(req.params.prodId);
 		if (index > -1) {
 			productList.splice(index, 1); // remove product from product list
 		}
-		console.log(newProdList);
+		// console.log(newProdList);
 		Cart.update({ id: req.params.cartId }, { products: productList }).fetch().exec((err, cart) => {
 			if (err) {
 				res.serverError(err);

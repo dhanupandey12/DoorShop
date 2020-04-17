@@ -63,14 +63,14 @@ module.exports = {
 			}
 			res.send(orders);
 		});
-	},
+	}
 
 	//fetching orders for a customer
-	fetchOrdersByCustomerId: (req, res) => {
-		userId = req.params.userId;
-		Customer.findOne({ id: userId }).populate('orders').exec((err, user) => {
-			if (err) res.send(err);
-			res.send(user.orders);
-		});
-	}
+	// fetchOrdersByCustomerId: (req, res) => {
+	// 	userId = req.params.userId;
+	// 	Customer.findOne({ id: userId }).populate('orders').exec((err, user) => {
+	// 		if (err) res.send(err);
+	// 		res.send(user.orders);
+	// 	});
+	// }
 };

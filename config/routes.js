@@ -19,6 +19,11 @@ module.exports.routes = {
 	'GET /User/:id': 'CustomerController.getUserById',
 	'Put /User/:id': 'CustomerController.edit',
 	'Delete /User/:id': 'CustomerController.delete',
+	/**
+	 * Assocation route
+	 * To fetch all orders for a customer 
+	 */
+	'GET /user/:userId/orders': 'CustomerController.fetchOrdersByCustomerId',
 
 	//Shopkeeper routes
 	'POST /Shopkeeper/': 'ShopkeeperController.createShop',
@@ -30,11 +35,7 @@ module.exports.routes = {
 	// Orders routes
 	'GET /orders': 'OrdersController.getOrders',
 	'GET /orders/:id': 'OrdersController.getOrder',
-	/**
-	 * Assocation route
-	 * To fetch all orders for a customer 
-	 */
-	'GET /user/:userId/orders': 'OrdersController.fetchOrdersByCustomerId',
+	// 'GET /user/:userId/orders': 'OrdersController.fetchOrdersByCustomerId',
 
 	'POST /orders': 'OrdersController.addOrder',
 	'DELETE /orders': 'OrdersController.deleteOrders',

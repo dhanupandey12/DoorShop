@@ -81,7 +81,7 @@ module.exports = {
 					error: err
 				});
 			});
-	}
+	},
 
 	// delete:(req,res)=>{
 	// 	const id = req.params.id;
@@ -92,4 +92,13 @@ module.exports = {
 	// 		return res.json(result);
 	// 	});
 	// }
+
+	// fetching orders for a customer
+	fetchOrdersByCustomerId: (req, res) => {
+		userId = req.params.userId;
+		Customer.findOne({ id: userId }).populate('orders').exec((err, user) => {
+			if (err) res.send(err);
+			res.send(user.orders);
+		});
+	}
 };
