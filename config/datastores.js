@@ -14,9 +14,7 @@
  */
 
 module.exports.datastores = {
-
-
-  /***************************************************************************
+	/***************************************************************************
   *                                                                          *
   * Your app's default datastore.                                            *
   *                                                                          *
@@ -32,9 +30,8 @@ module.exports.datastores = {
   *                                                                          *
   ***************************************************************************/
 
-  default: {
-
-    /***************************************************************************
+	default: {
+		/***************************************************************************
     *                                                                          *
     * Want to use a different database during development?                     *
     *                                                                          *
@@ -48,12 +45,11 @@ module.exports.datastores = {
     *    (See https://sailsjs.com/config/datastores for help.)                 *
     *                                                                          *
     ***************************************************************************/
-    // adapter: 'sails-mysql',
-    // url: 'mysql://user:password@host:port/database',
-    adapter: 'sails-mongo',
-    url: 'mongodb://127.0.0.1:27017/DoorShop'
-
-  },
-
-
+		// adapter: 'sails-mysql',
+		// url: 'mysql://user:password@host:port/database',
+		adapter: 'sails-mongo',
+		// url: 'mongodb://127.0.0.1:27017/DoorShop'
+		url:
+			'mongodb://dbuser:dbuser@cluster0-shard-00-00-eriqy.mongodb.net:27017,cluster0-shard-00-01-eriqy.mongodb.net:27017,cluster0-shard-00-02-eriqy.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority'
+	}
 };
