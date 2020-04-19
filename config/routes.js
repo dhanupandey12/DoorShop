@@ -19,6 +19,9 @@ module.exports.routes = {
 	'GET /User/:id': 'CustomerController.getUserById',
 	'Put /User/:id': 'CustomerController.edit',
 	'Delete /User/:id': 'CustomerController.delete',
+
+	'GET /User/:id/cart': 'CustomerController.findCartByCustomerId', //find cart for user
+
 	/**
 	 * Assocation route
 	 * To fetch all orders for a customer 
@@ -46,7 +49,7 @@ module.exports.routes = {
 	'GET /cart/:id': 'CartController.getCart',
 	// 'POST /cart': 'CartController.addCart',
 	// 'PUT /cart/:id': 'CartController.editCart',
-	'POST /cart': 'CartController.createCart',
+	'POST /cart/:userId': 'CartController.createCart',
 	'PUT /cart/:cartId/add/:prodId': 'CartController.addToCart',
 	'PUT /cart/:cartId/remove/:prodId': 'CartController.removeFromCart',
 

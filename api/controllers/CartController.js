@@ -11,7 +11,7 @@ module.exports = {
 	 * i.e. before adding any product in it or removing any product from it
 	 */
 	createCart: (req, res) => {
-		Cart.create({}).fetch().exec((err, cart) => {
+		Cart.create({ user: req.params.userId }).fetch().exec((err, cart) => {
 			if (err) res.serverError(err);
 			res.send(cart);
 		});

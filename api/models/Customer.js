@@ -22,6 +22,12 @@ module.exports = {
 		orders: {
 			collection: 'orders',
 			via: 'orderedBy'
+		},
+
+		// Association customer and cart
+		cart: {
+			collection: 'cart',
+			via: 'user'
 		}
 	},
 

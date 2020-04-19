@@ -11,6 +11,12 @@ module.exports = {
 		// userId: { type: 'number', unique: true, required: true },
 		// products: { type: 'json', columnType: 'array' }
 
+		// association customer and cart
+		user: {
+			model: 'customer',
+			unique: true
+		},
+
 		products: { collection: 'product' }
 
 		// cartTotal: { type: 'number', required: true }

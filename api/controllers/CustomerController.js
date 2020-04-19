@@ -37,7 +37,7 @@ module.exports = {
 
 	getUserById: (req, res) => {
 		let id = req.params.id;
-		Customer.find({ _id: id }).exec((err, user) => {
+		Customer.findOne({ _id: id }).exec((err, user) => {
 			if (err) return err;
 			res.json(user);
 		});
@@ -100,5 +100,29 @@ module.exports = {
 			if (err) res.send(err);
 			res.send(user.orders);
 		});
+	},
+
+	// find cart for the customer
+	findCartByCustomerId: (req, res) => {
+		Customer.findOne({ id: req.params.id }).populate('cart').exec((err, user) => {
+			if (err) res.serverError(err);
+			res.send(user.cart);
+		});
 	}
 };
+
+/*
+{
+	"UserName": "shivam",
+	"UserPassword": "shivam",
+	"confirmPassword": "shivam",
+	"EmailAddress": "shivam@gmail.com",
+	"PhoneNumber": "3263464567",
+	"UserCity": "sdgdg",
+	"UserState": "sdgsg",
+	"UserCountry": "gdsgs",
+	"UserAddress1": "sdgssgs",
+	"UserAddress2": "aggsgxs",
+	"PostalCode": "433464"
+}
+*/
