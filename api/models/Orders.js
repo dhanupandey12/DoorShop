@@ -10,7 +10,7 @@ module.exports = {
 		// orderId: { type: 'string', required: true },
 		// cartId: { type: 'number', required: true },
 		// userId: { type: 'number', required: true },
-		orderAmount: { type: 'number', required: true },
+		orderAmount: { type: 'string', required: true },
 		orderShipping: { type: 'number', required: true },
 		orderTax: { type: 'number', required: true },
 		orderAddress: { type: 'string', required: true },

@@ -18,6 +18,12 @@ module.exports = {
 			orderedBy: req.body.customer,
 			ProductId: req.body.productIds
 		};
+		console.log(orderObj);
+		console.log(req.body);
+    let id = req.params.userId;
+		Customer.find({_id:id},(err,user)=>{
+
+		});
 		Orders.create(orderObj).fetch().exec((err, order) => {
 			if (err) {
 				console.log(err);
