@@ -9,8 +9,8 @@ module.exports = {
 	attributes: {
 		// orderId: { type: 'string', required: true },
 		// cartId: { type: 'number', required: true },
-		// userId: { type: 'number', required: true },
-		orderAmount: { type: 'string', required: true },
+		// userId: { type: 'number', required: true },5e9c556b570e1b36331818cb
+		orderAmount: { type: 'number', required: true },
 		orderShipping: { type: 'number', required: true },
 		orderTax: { type: 'number', required: true },
 		orderAddress: { type: 'string', required: true },
