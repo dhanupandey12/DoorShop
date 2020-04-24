@@ -9,23 +9,39 @@ module.exports = {
 	addOrder: (req, res) => {
 		let orderObj = {
 			cartId: req.body.cartId,
-			orderAmount: req.body.amount,
-			orderShipping: req.body.shipping,
-			orderTax: req.body.tax,
-			orderAddress: req.body.address,
-			orderPhone: req.body.phone,
-			orderEmail: req.body.email,
+			orderAmount: req.body.orderAmount,
+			orderShipping: req.body.orderShipping,
+			orderTax: req.body.orderTax,
+			orderAddress: req.body.orderAddress,
+			orderPhone: req.body.orderPhone,
+			orderEmail: req.body.orderEmail,
 			orderedBy: req.body.customer,
 			ProductId: req.body.productIds
+
+
+
+
 		};
+
 		Orders.create(orderObj).fetch().exec((err, order) => {
 			if (err) {
 				console.log(err);
 				if (err.code == 'E_INVALID_NEW_RECORD') res.badRequest();
 				else res.serverError(err);
 			}
+			else{
+				Customer.find({_id:req.params.id},(err,user)=>{
+					if(err)
+					res.serverError(err);
+					else{
+						user.order = order;
+						order.orderedBy= req.params.id;
+						res.send(order);
+					}
+				})
+			}
 			// console.log(order);
-			res.send(order);
+
 		});
 	},
 
