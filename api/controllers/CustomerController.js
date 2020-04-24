@@ -42,14 +42,14 @@ module.exports = {
 
 	getUserById: (req, res) => {
 		let id = req.params.id;
-		Customer.findOne({ _id: id }).exec((err, user) => {
+		Customer.findOne({ _id: id }).populate('orders').populate('cart').exec((err, user) => {
 			if (err) return err;
 			res.json(user);
 		});
 	},
 
 	getAllUser: (req, res) => {
-		Customer.find({}).exec((err, user) => {
+		Customer.find({}).populate('orders').populate('cart').exec((err, user) => {
 			if (err) return err;
 			res.json(user);
 		});

@@ -9,28 +9,30 @@
  */
 
 module.exports.policies = {
+	//'*': ['isAuthorized'],
+	ShopkeeperController: {
+		'*': 'isAuthorized',
+		createShop: true
+	},
+	CustomerController: {
+		'*': 'isAuthorized',
+		createUser: true
+	},
+	ProductController: {
+		'*': 'isAuthorized',
+		getProduct: true,
+		getProducts: true
+	},
 
- //'*': ['isAuthorized'],
- 'ShopkeeperController': {
-   '*': 'isAuthorized',
-   'createShop': true
- },
-  'CustomerController': {
-    '*': 'isAuthorized',
-    'createUser': true
-  },
-
-
-  'AuthController': {
-    '*': true
-  }
-  /***************************************************************************
+	AuthController: {
+		'*': true
+	}
+	/***************************************************************************
   *                                                                          *
   * Default policy for all controllers and actions, unless overridden.       *
   * (`true` allows public access)                                            *
   *                                                                          *
   ***************************************************************************/
 
-  // '*': true,
-
+	// '*': true,
 };
