@@ -31,11 +31,9 @@ module.exports = {
 		Customer.create(user).fetch().exec((err, result) => {
 			if (err) res.send(err);
 			//res.status(200).json({user: result, token: jwToken.issue({id: result.id})});
-			var ul = 'POST /cart/' + result.id;
-			bod = {};
-			sails.request(ul, bod, function(err, response, body) {
-				if (err) res.send(err);
-				res.status(200).json({ user: result, cart: body });
+			Cart.create({ user: result.id }).fetch().then(function(createdCart) {
+				console.log(createdCart);
+				res.status(200).json({ user: result, cart: createdCart });
 			});
 		});
 	},
