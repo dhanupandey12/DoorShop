@@ -24,7 +24,7 @@ module.exports.routes = {
 
 	/**
 	 * Assocation route
-	 * To fetch all orders for a customer 
+	 * To fetch all orders for a customer
 	 */
 	'GET /user/:userId/orders': 'CustomerController.fetchOrdersByCustomerId',
 
@@ -40,7 +40,7 @@ module.exports.routes = {
 	'GET /orders/:id': 'OrdersController.getOrder',
 	// 'GET /user/:userId/orders': 'OrdersController.fetchOrdersByCustomerId',
 
-	'POST /orders': 'OrdersController.addOrder',
+	'POST /orders/:id': 'OrdersController.addOrder',
 	'DELETE /orders': 'OrdersController.deleteOrders',
 	'DELETE /orders/:id': 'OrdersController.deleteOrder',
 
