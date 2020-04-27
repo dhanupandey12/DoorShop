@@ -8,9 +8,9 @@ var bcrypt = require('bcryptjs');
 module.exports = {
 	createShop: (req, res) => {
 		var category = req.body.category;
-		ShopCategory.find({ CategoryName: category }).then(function(category) {
+		ShopCategory.findOne({ CategoryName: category }).then(function(category) {
 			if (category == '') return res.send(449);
-			category = category[0];
+			// category = category[0];
 			console.log(category);
 			var user;
 			if (req.body.UserPassword !== req.body.confirmPassword) {
@@ -43,7 +43,7 @@ module.exports = {
 
 	getShopById: (req, res) => {
 		let id = req.params.id;
-		Shopkeeper.find({ _id: id }).populate('CategoryId').exec((err, user) => {
+		Shopkeeper.findOne({ _id: id }).populate('CategoryId').exec((err, user) => {
 			if (err) return err;
 			res.json(user);
 		});

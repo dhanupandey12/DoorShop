@@ -17,10 +17,6 @@ module.exports = {
 			orderEmail: req.body.orderEmail,
 			orderedBy: req.body.customer,
 			ProductId: req.body.productIds
-
-
-
-
 		};
 
 		Orders.create(orderObj).fetch().exec((err, order) => {
@@ -28,20 +24,17 @@ module.exports = {
 				console.log(err);
 				if (err.code == 'E_INVALID_NEW_RECORD') res.badRequest();
 				else res.serverError(err);
-			}
-			else{
-				Customer.find({_id:req.params.id},(err,user)=>{
-					if(err)
-					res.serverError(err);
-					else{
+			} else {
+				Customer.find({ _id: req.params.id }, (err, user) => {
+					if (err) res.serverError(err);
+					else {
 						user.order = order;
-						order.orderedBy= req.params.id;
+						order.orderedBy = req.params.id;
 						res.send(order);
 					}
-				})
+				});
 			}
 			// console.log(order);
-
 		});
 	},
 
@@ -80,13 +73,4 @@ module.exports = {
 			res.send(orders);
 		});
 	}
-
-	//fetching orders for a customer
-	// fetchOrdersByCustomerId: (req, res) => {
-	// 	userId = req.params.userId;
-	// 	Customer.findOne({ id: userId }).populate('orders').exec((err, user) => {
-	// 		if (err) res.send(err);
-	// 		res.send(user.orders);
-	// 	});
-	// }
 };

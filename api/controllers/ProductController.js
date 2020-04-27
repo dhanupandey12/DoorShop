@@ -19,18 +19,18 @@ module.exports = {
 		// productImage.mv(imageUrl,function(err){
 		//   return console.log(err);
 		// });
-		Shopkeeper.find({ _id: req.token.id })
+		Shopkeeper.findOne({ _id: req.token.id })
 			.then(function(user) {
 				if (user == '') return res.send(449);
 				// console.log(user);
 				console.log('1st place');
-				user = user[0];
+				// user = user[0];
 				var category = req.body.category;
-				ProductCategory.find({ CategoryName: category })
+				ProductCategory.findOne({ CategoryName: category })
 					.then(function(category) {
 						console.log('2nd place');
 						if (category == '') return res.send(449);
-						category = category[0];
+						// category = category[0];
 						// console.log(category);
 						let productobj = {
 							ShopId: user.id,
@@ -85,7 +85,7 @@ module.exports = {
 		// res.send("Accessed getproducts")
 	},
 	getProduct: function(req, res) {
-		Product.find({ _id: req.params.id })
+		Product.findOne({ _id: req.params.id })
 			.populate('CategoryId')
 			.populate('ShopId')
 			.then(function(result) {

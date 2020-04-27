@@ -19,13 +19,7 @@ module.exports.routes = {
 	'GET /User/:id': 'CustomerController.getUserById',
 	'Put /User/:id': 'CustomerController.edit',
 	'Delete /User/:id': 'CustomerController.delete',
-
 	'GET /User/:id/cart': 'CustomerController.findCartByCustomerId', //find cart for user
-
-	/**
-	 * Assocation route
-	 * To fetch all orders for a customer
-	 */
 	'GET /user/:userId/orders': 'CustomerController.fetchOrdersByCustomerId',
 
 	//Shopkeeper routes
@@ -38,7 +32,6 @@ module.exports.routes = {
 	// Orders routes
 	'GET /orders': 'OrdersController.getOrders',
 	'GET /orders/:id': 'OrdersController.getOrder',
-	// 'GET /user/:userId/orders': 'OrdersController.fetchOrdersByCustomerId',
 
 	'POST /orders/:id': 'OrdersController.addOrder',
 	'DELETE /orders': 'OrdersController.deleteOrders',
@@ -47,8 +40,6 @@ module.exports.routes = {
 	// Cart routes
 	'GET /cart': 'CartController.getCarts',
 	'GET /cart/:id': 'CartController.getCart',
-	// 'POST /cart': 'CartController.addCart',
-	// 'PUT /cart/:id': 'CartController.editCart',
 	'POST /cart/:userId': 'CartController.createCart',
 	'PUT /cart/:cartId/add/:prodId': 'CartController.addToCart',
 	'PUT /cart/:cartId/remove/:prodId': 'CartController.removeFromCart',
