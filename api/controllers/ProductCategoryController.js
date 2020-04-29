@@ -17,7 +17,7 @@ module.exports = {
 			});
 	},
 	getCategory: function(req, res) {
-		ProductCategory.find({ id: req.params.id })
+		ProductCategory.findOne({ id: req.params.id })
 			.then(function(category) {
 				if (category == '') return res.send(449);
 				res.json(category);

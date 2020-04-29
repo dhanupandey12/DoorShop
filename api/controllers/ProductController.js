@@ -19,38 +19,49 @@ module.exports = {
 		// productImage.mv(imageUrl,function(err){
 		//   return console.log(err);
 		// });
-		var category = req.body.category;
-		ProductCategory.find({ CategoryName: category })
-			.then(function(category) {
-				if (category == '') return res.send(449);
-				category = category[0];
-				console.log(category);
-				let productobj = {
-					ShopId: req.body.shopid,
-					CategoryId: category.id,
-					ProductName: req.body.name,
-					Description: req.body.description,
-					ProductImagesPaths: 'Working on it now',
-					Quantity: req.body.quantity,
-					Weight: req.body.weight,
-					Price: req.body.price
-				};
-				console.log(productobj);
-				Product.create(productobj)
-					.fetch()
-					.then(function(product) {
-						console.log(product);
-						res.json(product);
+		Shopkeeper.findOne({ _id: req.token.id })
+			.then(function(user) {
+				if (user == '') return res.send(449);
+				// console.log(user);
+				console.log('1st place');
+				// user = user[0];
+				var category = req.body.category;
+				ProductCategory.findOne({ CategoryName: category })
+					.then(function(category) {
+						console.log('2nd place');
+						if (category == '') return res.send(449);
+						// category = category[0];
+						// console.log(category);
+						let productobj = {
+							ShopId: user.id,
+							CategoryId: category.id,
+							ProductName: req.body.name,
+							Description: req.body.description,
+							ProductImagesPaths: 'Working on it now',
+							Quantity: req.body.quantity,
+							Weight: req.body.weight,
+							Price: req.body.price
+						};
+						console.log(productobj);
+						Product.create(productobj)
+							.fetch()
+							.then(function(product) {
+								console.log(product);
+								res.json(product);
+							})
+							// Uniqueness constraint violation
+							.catch({ code: 'E_UNIQUE' }, function(err) {
+								res.sendStatus(409);
+							})
+							// Some other kind of usage / validation error
+							.catch({ name: 'UsageError' }, function(err) {
+								res.badRequest();
+							})
+							// If something completely unexpected happened.
+							.catch(function(err) {
+								res.serverError(err);
+							});
 					})
-					// Uniqueness constraint violation
-					.catch({ code: 'E_UNIQUE' }, function(err) {
-						res.sendStatus(409);
-					})
-					// Some other kind of usage / validation error
-					.catch({ name: 'UsageError' }, function(err) {
-						res.badRequest();
-					})
-					// If something completely unexpected happened.
 					.catch(function(err) {
 						res.serverError(err);
 					});
@@ -74,7 +85,7 @@ module.exports = {
 		// res.send("Accessed getproducts")
 	},
 	getProduct: function(req, res) {
-		Product.find({ _id: req.params.id })
+		Product.findOne({ _id: req.params.id })
 			.populate('CategoryId')
 			.populate('ShopId')
 			.then(function(result) {
