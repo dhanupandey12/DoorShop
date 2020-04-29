@@ -25,25 +25,14 @@ module.exports = {
 				console.log(err);
 				if (err.code == 'E_INVALID_NEW_RECORD') res.badRequest();
 				else res.serverError(err);
-<<<<<<< HEAD
+
 			}
-			// console.log(order);
+
 			res.send(order);
-=======
-			} else {
-				Customer.find({ _id: req.params.id }, (err, user) => {
-					if (err) res.serverError(err);
-					else {
-						user.order = order;
-						order.orderedBy = req.params.id;
-						res.send(order);
-					}
-				});
-			}
-			// console.log(order);
->>>>>>> 810ff14725a512f6eea12ad7c2e5f876ddabdcc1
 		});
 	},
+
+
 
 	getOrders: (req, res) => {
 		Orders.find({}).populate('ProductId').populate('orderedBy').exec((err, orders) => {
