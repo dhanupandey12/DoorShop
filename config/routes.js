@@ -40,7 +40,7 @@ module.exports.routes = {
 	'GET /orders/:id': 'OrdersController.getOrder',
 	// 'GET /user/:userId/orders': 'OrdersController.fetchOrdersByCustomerId',
 
-	'POST /orders/:id': 'OrdersController.addOrder',
+	'POST /orders/': 'OrdersController.addOrder',
 	'DELETE /orders': 'OrdersController.deleteOrders',
 	'DELETE /orders/:id': 'OrdersController.deleteOrder',
 
