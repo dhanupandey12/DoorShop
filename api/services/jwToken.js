@@ -1,7 +1,7 @@
 var
   jwt = require('jsonwebtoken'),
   // tokenSecret = "secretissecet";
- jwtSecret = sails.config.secrets.jwtSecret;
+  jwtSecret = sails.config.secrets.jwtSecret;
 
 // Generates a token from supplied payload
 // module.exports.issue = function(payload) {
@@ -16,22 +16,22 @@ var
 
 module.exports = {
   issue: function (payload) {
-    token = jwt.sign(payload, jwtSecret, {expiresIn: 180 * 60})
+    token = jwt.sign(payload, jwtSecret)
     // var decode = jwt.decode(token)
     // console.log(decode);
     return token
   },
 
-// Verifies token on a request
-// module.exports.verify = function(token, callback) {
-//   return jwt.verify(
-//     token,
-//     tokenSecret
-//     //{}, // No Option, for more see https://github.com/auth0/node-jsonwebtoken#jwtverifytoken-secretorpublickey-options-callback
-//   //  callback //Pass errors or decoded token to callback
-//   );
+  // Verifies token on a request
+  // module.exports.verify = function(token, callback) {
+  //   return jwt.verify(
+  //     token,
+  //     tokenSecret
+  //     //{}, // No Option, for more see https://github.com/auth0/node-jsonwebtoken#jwtverifytoken-secretorpublickey-options-callback
+  //   //  callback //Pass errors or decoded token to callback
+  //   );
 
-verify: function (token, callback) {
+  verify: function (token, callback) {
     return jwt.verify(token, jwtSecret, callback);
   }
 };
