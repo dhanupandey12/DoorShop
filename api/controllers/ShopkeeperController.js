@@ -30,6 +30,8 @@ module.exports = {
 				UserCountry: req.body.UserCountry,
 				UserAddress1: req.body.UserAddress1,
 				UserAddress2: req.body.UserAddress2,
+				latitude: req.body.latitude,
+				longitude: req.body.longitude,
 				PostalCode: req.body.PostalCode
 			};
 			console.log(user);

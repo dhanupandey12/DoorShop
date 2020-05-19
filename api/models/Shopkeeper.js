@@ -17,6 +17,8 @@ module.exports = {
 		UserCountry: { type: 'string', required: true },
 		UserAddress1: { type: 'string', required: true },
 		UserAddress2: { type: 'string', required: true },
+		latitude: { type: 'number', required: true },
+		longitude: { type: 'number', required: true },
 		PostalCode: { type: 'string', required: true }
 	},
 	customToJSON: function() {
