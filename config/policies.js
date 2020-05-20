@@ -29,7 +29,12 @@ module.exports.policies = {
 	CartController: {
 		'*': 'isAuthorized',
 		getCart: true,
-		getCarts: true,
+		getCarts: true
+	},
+	OrdersController: {
+		'*': 'isAuthorized'
+		// getCart: true,
+		// getCarts: true,
 	}
 	/***************************************************************************
   *                                                                          *
